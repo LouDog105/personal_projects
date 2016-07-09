@@ -1,0 +1,256 @@
+#!/bin/bash
+
+# this is a helpful utility to learn the NUMBER of each alphabetical character. This will help you learn how to read alphabetical order much faster if you correlate the letters to numbers! Enjoy :)
+
+PROGRAM=$(basename $0)
+
+# generate a random NUMBER less than 26
+logic () {
+random_NUMBER (){
+
+	RANGE=26
+	NUMBER=$RANDOM
+
+let "NUMBER %= $RANGE"
+}
+random_NUMBER 
+
+# Assign NUMBER values to letters.
+if [ $NUMBER = 0 ]; then
+	LETTER="A"
+fi
+if [ $NUMBER = 1 ]; then
+	LETTER="B"
+fi
+if [ $NUMBER = 2 ]; then
+	LETTER="C"
+fi
+if [ $NUMBER = 3 ]; then
+	LETTER="D"
+fi
+if [ $NUMBER = 4 ]; then
+	LETTER="E"
+fi
+if [ $NUMBER = 5 ]; then
+	LETTER="F"
+fi
+if [ $NUMBER = 6 ]; then
+	LETTER="G"
+fi
+if [ $NUMBER = 7 ]; then
+	LETTER="H"
+fi
+if [ $NUMBER = 8 ]; then
+        LETTER="I"
+fi
+if [ $NUMBER = 9 ]; then
+        LETTER="J"
+fi
+if [ $NUMBER = 10 ]; then
+        LETTER="K"
+fi
+if [ $NUMBER = 11 ]; then
+        LETTER="L"
+fi
+if [ $NUMBER = 12 ]; then
+        LETTER="M"
+fi
+if [ $NUMBER = 13 ]; then
+        LETTER="N"
+fi
+if [ $NUMBER = 14 ]; then
+        LETTER="O"
+fi
+if [ $NUMBER = 15 ]; then
+        LETTER="P"
+fi
+if [ $NUMBER = 16 ]; then
+        LETTER="Q"
+fi
+if [ $NUMBER = 17 ]; then
+        LETTER="R"
+fi
+if [ $NUMBER = 18 ]; then
+        LETTER="S"
+fi
+if [ $NUMBER = 19 ]; then
+        LETTER="T"
+fi
+if [ $NUMBER = 20 ]; then
+        LETTER="U"
+fi
+if [ $NUMBER = 21 ]; then
+        LETTER="V"
+fi
+if [ $NUMBER = 22 ]; then
+        LETTER="W"
+fi
+if [ $NUMBER = 23 ]; then
+        LETTER="X"
+fi
+if [ $NUMBER = 24 ]; then
+        LETTER="Y"
+fi
+if [ $NUMBER = 25 ]; then
+        LETTER="Z"
+fi
+let "NUMBER=NUMBER+1"
+}
+
+
+# Assign $NUMBER value to letters.
+responcelogic () {
+if [ $NUMBER = 1 ]; then
+	NUMBERLETTER="A"
+fi
+if [ $NUMBER = 2 ]; then
+	NUMBERLETTER="B"
+fi
+if [ $NUMBER = 3 ]; then
+	NUMBERLETTER="C"
+fi
+if [ $NUMBER = 4 ]; then
+	NUMBERLETTER="D"
+fi
+if [ $NUMBER = 5 ]; then
+	NUMBERLETTER="E"
+fi
+if [ $NUMBER = 6 ]; then
+	NUMBERLETTER="F"
+fi
+if [ $NUMBER = 7 ]; then
+	NUMBERLETTER="G"
+fi
+if [ $NUMBER = 8 ]; then
+	NUMBERLETTER="H"
+fi
+if [ $NUMBER = 9 ]; then
+        NUMBERLETTER="I"
+fi
+if [ $NUMBER = 10 ]; then
+        NUMBERLETTER="J"
+fi
+if [ $NUMBER = 11 ]; then
+        NUMBERLETTER="K"
+fi
+if [ $NUMBER = 12 ]; then
+        NUMBERLETTER="L"
+fi
+if [ $NUMBER = 13 ]; then
+        NUMBERLETTER="M"
+fi
+if [ $NUMBER = 14 ]; then
+        NUMBERLETTER="N"
+fi
+if [ $NUMBER = 15 ]; then
+        NUMBERLETTER="O"
+fi
+if [ $NUMBER = 16 ]; then
+        NUMBERLETTER="P"
+fi
+if [ $NUMBER = 17 ]; then
+        NUMBERLETTER="Q"
+fi
+if [ $NUMBER = 18 ]; then
+        NUMBERLETTER="R"
+fi
+if [ $NUMBER = 19 ]; then
+        NUMBERLETTER="S"
+fi
+if [ $NUMBER = 20 ]; then
+        NUMBERLETTER="T"
+fi
+if [ $NUMBER = 21 ]; then
+        NUMBERLETTER="U"
+fi
+if [ $NUMBER = 22 ]; then
+        NUMBERLETTER="V"
+fi
+if [ $NUMBER = 23 ]; then
+        NUMBERLETTER="W"
+fi
+if [ $NUMBER = 24 ]; then
+        NUMBERLETTER="X"
+fi
+if [ $NUMBER = 25 ]; then
+        NUMBERLETTER="Y"
+fi
+if [ $NUMBER = 26 ]; then
+        NUMBERLETTER="Z"
+fi
+
+}
+
+# clear screen
+clear
+
+# learn alpha logo
+cat << "EOF"
+    _____  _____  _____  _____  _____  _____  _____  _____  _____ 
+   |_____||_____||_____||_____||_____||_____||_____||_____||_____|
+         __                           _   _       _           
+        / /  ___  __ _ _ __ _ __     /_\ | |_ __ | |__   __ _ 
+       / /  / _ \/ _` | '__| '_ \   //_\\| | '_ \| '_ \ / _` |
+      / /__|  __/ (_| | |  | | | | /  _  \ | |_) | | | | (_| |
+      \____/\___|\__,_|_|  |_| |_| \_/ \_/_| .__/|_| |_|\__,_|
+                                           |_| 
+					      
+					           -r3lentless
+    _____  _____  _____  _____  _____  _____  _____  _____  _____ 
+   |_____||_____||_____||_____||_____||_____||_____||_____||_____|
+        This program will help you learn alphabetical order                                                             
+                  Use "LearnAlpha -h" for help menu
+
+EOF
+# displays the help file
+usage () {
+echo "$PROGRAM: usage: $PROGRAM [OPTION]
+
+-l, --learning-mode	Provides alphabet with numbers. 
+-h, --help 		Provides this help page.
+-q, -Q			Exits program"
+}
+
+# check to see if any parameters exist
+LEARNINGMODE=
+while [[ -n $1 ]]; do
+	case $1 in
+		-l | --learning-mode)	LEARNINGMODE=1
+					;;
+		-h | --help)		usage >&2
+					exit 1
+					;;
+	esac
+	shift
+done
+
+# create the learning mode spash screen.
+	if [[ -n $LEARNINGMODE ]]; then
+	echo "***LEARNING MODE***
+	
+	Here is the NUMBER assignment for each alphabet letter.
+	A = 1	E = 5	I = 9	M = 13	Q = 17	U = 21	Y = 25	
+	B = 2	F = 6	J = 10	N = 14	R = 18	V = 22	Z = 26
+	C = 3	G = 7	K = 11	O = 15	S = 19	W = 23
+	D = 4	H = 8	L = 12	P = 16	T = 20	X = 24
+	"
+	fi
+
+# main program logic
+while true; do
+logic
+responcelogic
+	read -p "What is the value for the LETTER `/bin/echo -e "\e[1;36m$LETTER\e[0m"` > " 
+		if [ $REPLY = "q" ]; then
+			break
+		fi
+		if [ $REPLY = "Q" ]; then
+			break
+		fi
+	if [ $REPLY = $NUMBER ]; then
+		/bin/echo -e "\e[1;36mThat is CORRECT!\e[0m"
+	else
+		/bin/echo -e "\e[1;31mThat is not correct. The answer is $NUMBER which is $NUMBERLETTER.\e[0m"
+
+	fi
+done
