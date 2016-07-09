@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# this is a helpful utility to learn the NUMBER of each alphabetical character.
+# this is a helpful utility to learn the NUMBER of each alphabetical character. This will help you learn how to read alphabetical order much faster if you correlate the letters to numbers!
 
 PROGRAM=$(basename $0)
 
