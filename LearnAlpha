@@ -2,6 +2,8 @@
 
 # this is a helpful utility to learn the NUMBER of each alphabetical character. This will help you learn how to read alphabetical order much faster if you correlate the letters to numbers! Enjoy :)
 
+START_TIME=$SECONDS
+
 PROGRAM=$(basename $0)
 
 # generate a random NUMBER less than 26
@@ -185,7 +187,7 @@ fi
 clear
 
 # learn alpha logo
-cat << "EOF"
+lolcat -a -d 7 -s 40.0 << "EOF"
     _____  _____  _____  _____  _____  _____  _____  _____  _____ 
    |_____||_____||_____||_____||_____||_____||_____||_____||_____|
          __                           _   _       _           
@@ -198,9 +200,10 @@ cat << "EOF"
 					           -r3lentless
     _____  _____  _____  _____  _____  _____  _____  _____  _____ 
    |_____||_____||_____||_____||_____||_____||_____||_____||_____|
-        This program will help you learn alphabetical order                                                             
+EOF
+cat << "EOF"
+	This program will help you learn alphabetical order                                                             
                   Use "LearnAlpha -h" for help menu
-
 EOF
 # displays the help file
 usage () {
@@ -235,22 +238,50 @@ done
 	D = 4	H = 8	L = 12	P = 16	T = 20	X = 24
 	"
 	fi
+# score starting value 
+
 
 # main program logic
 while true; do
 logic
 responcelogic
+
+	((SCORE=$SCORE+0))
+	echo Points = $SCORE
+	
 	read -p "What is the value for the LETTER `/bin/echo -e "\e[1;36m$LETTER\e[0m"` > " 
-		if [ $REPLY = "q" ]; then
+
+		if [ -z "$REPLY" ]; then
+		echo "Glad to see your trying hard..."
+		fi
+		if [ "$REPLY" = "q" ]; then
 			break
 		fi
-		if [ $REPLY = "Q" ]; then
+		if [ "$REPLY" = "Q" ]; then
 			break
 		fi
-	if [ $REPLY = $NUMBER ]; then
+	if [ "$REPLY" = $NUMBER ]; then
+		((SCORE=$SCORE+1))
 		/bin/echo -e "\e[1;36mThat is CORRECT!\e[0m"
 	else
 		/bin/echo -e "\e[1;31mThat is not correct. The answer is $NUMBER which is $NUMBERLETTER.\e[0m"
 
 	fi
 done
+
+ELAPSTED_TIME=$(($SECONDS - $START_TIME))
+SCORE_TIME=$(($ELAPSTED_TIME * 150))
+FINAL_SCORE=$((($SCORE*1000) - $SCORE_TIME))
+
+scorefunction () {
+lolcat << EOF
+$FINAL_SCORE
+EOF
+}
+echo "
+You played for ( `/bin/echo -e "\e[37m$ELAPSTED_TIME\e[m"` ) seconds and made -->`/bin/echo -e "\e[1;3;38;5;202m$SCORE\e[m"`<-- points!
+"
+/bin/echo -n "Your final score = "; scorefunction
+
+
+
